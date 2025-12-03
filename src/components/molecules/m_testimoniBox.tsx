@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AtomText from '../atoms/a_text'
+import Image from 'next/image'
 
 interface MoleculesTestimoniBoxProps {
     image: string
@@ -15,7 +16,7 @@ const MoleculesTestimoniBox: React.FC<MoleculesTestimoniBoxProps> = ({ image, na
 
     return (
         <div className={`relative bg-white shadow-lg rounded-3xl p-8 flex flex-col items-center transition-all duration-500 min-h-[280px] ${positionClass} testimoni-box`}>
-            <img src={image} alt={name} className='w-20 h-20 rounded-full object-cover -mt-18 border-4 shadow-md'/>
+            <Image src={image} alt={name} width={80} height={80} className="w-20 h-20 rounded-full object-cover -mt-18 border-4 shadow-md" />
             <p className='mt-6 text-gray-600 italic text-sm md:text-base'>“{testimoni}”</p>
             <div className='mt-6 text-center'>
                 <AtomText type='sub-title-small' text={name} />

@@ -4,26 +4,23 @@ import { Button } from '@/components/ui/button'
 import OrganismsNewsById from '@/components/organisms/o_news_by_id'
 import { Metadata } from 'next'
 
-interface NewssDetailByIdPageProps {
-    params: {
-        id: string
-    }
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
-    const res = await fetch(`https://saintlyneed-us.backendless.app/api/data/news?where=%60objectId%60%20%3D%20'${id}'`)
+
+    const res = await fetch(
+        `https://saintlyneed-us.backendless.app/api/data/news?where=%60objectId%60%20%3D%20'${id}'`
+    )
     const data = await res.json()
     const news = data[0]
-  
+
     return {
         title: news?.title || 'Blog Apps',
-        description: news?.content.slice(0, 150) || 'No description',
+        description: news?.content?.slice(0, 150) || 'No description',
     }
 }
 
-const NewssDetailByIdPage: React.FC<NewssDetailByIdPageProps> = ({ params }) => {
-    const { id } = params
+export default async function NewssDetailByIdPage({ params }: { params: Promise<{ id: string }>}) {
+    const { id } = await params
 
     return (
         <div className="min-h-screen bg-amber-50 p-5 lg:p-10">
@@ -39,5 +36,3 @@ const NewssDetailByIdPage: React.FC<NewssDetailByIdPageProps> = ({ params }) => 
         </div>
     )
 }
-
-export default NewssDetailByIdPage

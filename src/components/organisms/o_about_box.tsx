@@ -1,5 +1,6 @@
 import * as React from 'react';
 import AtomText from '../atoms/a_text'
+import Image from 'next/image'
 
 interface IOrganismsAboutBoxProps {
 }
@@ -8,7 +9,7 @@ const OrganismsAboutBox: React.FunctionComponent<IOrganismsAboutBoxProps> = (pro
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 min-h-[80vh]" id="aboutSection">
             <div className='flex items-center justify-center w-full h-full'>
-                <img src='/doctor/dr_tiffany_chang.png' alt='/doctor/dr_tiffany_chang.png' className='"w-full h-auto max-h-[80vh] object-contain"'/>
+                <Image src="/doctor/dr_tiffany_chang.png" alt="Dr. Tiffany Chang" width={500} height={700} className="w-full h-auto max-h-[80vh] object-contain" />
             </div>
             <div className='text-center md:text-start flex flex-col justify-center'>
                 <AtomText type='sub-title' text='Solusi Kebutuhan Estetika dan Gaya Hidup Masa Kini.'/>
